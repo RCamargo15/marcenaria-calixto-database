@@ -25,10 +25,11 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 	public void insert(Produto obj) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("INSERT INTO MARCENARIA.PRODUTO(DESC_PRODUTO) " + "VALUES(?)",
+			st = conn.prepareStatement("INSERT INTO MARCENARIA.PRODUTO(DESC_PRODUTO, PRECO_UNIT) " + "VALUES(?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
 
 			st.setString(1, obj.getDescProduto().toUpperCase());
+			st.setDouble(2, obj.getPrecoUnit());
 
 			int rowsAffected = st.executeUpdate();
 
@@ -53,9 +54,10 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-					"UPDATE MARCENARIA.PRODUTO SET " + "DESC_PRODUTO = ? WHERE PRODUTO.COD_PRODUTO = ?");
+					"UPDATE MARCENARIA.PRODUTO SET " + "DESC_PRODUTO = ?, PRECO_UNIT = ? WHERE PRODUTO.COD_PRODUTO = ?");
 			st.setString(1, obj.getDescProduto().toUpperCase());
-			st.setInt(2, obj.getCodProduto());
+			st.setDouble(2, obj.getPrecoUnit());
+			st.setInt(3, obj.getCodProduto());
 
 			st.executeUpdate();
 		} catch (SQLException e) {
@@ -133,6 +135,7 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 		Produto obj = new Produto();
 		obj.setCodProduto(rs.getInt("COD_PRODUTO"));
 		obj.setDescProduto(rs.getString("DESC_PRODUTO"));
+		obj.setPrecoUnit(rs.getDouble("PRECO_UNIT"));
 		return obj;
 	}
 

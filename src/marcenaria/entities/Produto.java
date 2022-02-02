@@ -8,14 +8,16 @@ public class Produto implements Serializable {
 
 	private Integer codProduto;
 	private String descProduto;
+	private Double precoUnit;
 
 	public Produto() {
 
 	}
 
-	public Produto(Integer codProduto, String descProduto) {
+	public Produto(Integer codProduto, String descProduto, Double precoUnit) {
 		this.codProduto = codProduto;
 		this.descProduto = descProduto;
+		this.precoUnit = precoUnit;
 	}
 
 	public Integer getCodProduto() {
@@ -32,6 +34,14 @@ public class Produto implements Serializable {
 
 	public void setDescProduto(String descProduto) {
 		this.descProduto = descProduto;
+	}
+
+	public Double getPrecoUnit() {
+		return precoUnit;
+	}
+
+	public void setPrecoUnit(Double precoUnit) {
+		this.precoUnit = precoUnit;
 	}
 
 	@Override
@@ -53,6 +63,7 @@ public class Produto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Produto [codProduto=" + codProduto + ", descProduto=" + descProduto;
+		return "Produto [codProduto=" + codProduto + ", descProduto=" + descProduto + ", precoUnit=" + precoUnit + "]";
 	}
+
 }

@@ -202,6 +202,7 @@ public class EstoqueDaoJDBC implements EstoqueDao {
 		Produto obj = new Produto();
 		obj.setCodProduto(rs.getInt("COD_PRODUTO"));
 		obj.setDescProduto(rs.getString("DESC_PRODUTO"));
+		obj.setPrecoUnit(rs.getDouble("PRECO_UNIT"));
 		return obj;
 	}
 
