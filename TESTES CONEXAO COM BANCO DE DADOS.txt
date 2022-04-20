@@ -1,0 +1,347 @@
+TESTES JAVA PARA MARCENARIA
+
+TESTES DO CLIENTE
+	  ClienteDao clienteDao = DaoFactory.createClienteDao();
+		  System.out.println("TESTE CLIENTE = FINDBYCODCLIENTE"); 
+		  Cliente cliente = clienteDao.findByCodCliente(3); 
+		  System.out.println(cliente);
+		  
+		  System.out.println("\n\nTESTE CLIENTE - FIND ALL"); 
+		  List<Cliente> list = clienteDao.findAll(); System.out.println(list);
+		  
+		  System.out.println("\n\nTESTE DE UPDATE"); 
+		  cliente =clienteDao.findByCodCliente(2); 
+		  System.out.println(cliente);
+		  cliente.setNome("Tathiane Sebastião da Silva"); 
+		  clienteDao.update(cliente);
+		  System.out.println(cliente); 
+		  System.out.println("UPDATED");
+		  
+		  Cliente cliente1 = clienteDao.findByCodCliente(3);
+		 cliente1.setBairro("Nilopolis"); clienteDao.update(cliente1);
+		  System.out.println(cliente1);
+		 
+		 System.out.println("TESTE DE DELETE"); clienteDao.deleteByCodCliente(3);
+		 cliente1 = clienteDao.findByCodCliente(3); System.out.println(cliente1);
+		 
+		
+		Cliente clienteInsert = new Cliente(0, "Fernando Tavares", "371649875", "36945697458", "Avenida Cangaiba", 1549, null, "Cangaiba", "03715-040", 21, "994983894", null, "fernando@hotmail.com", new Date(), null);
+		clienteDao.insert(clienteInsert);
+		System.out.println("Cliente inserido. Código de registro: " + clienteInsert.getCodCliente());
+
+TESTE EMPRESA
+		EmpresaDao empresaDao = DaoFactory.createEmpresaDao();
+		System.out.println("\n\nTESTE EMPRESA FINDALL");
+		List<Empresa> list = empresaDao.findAll();
+		for(Empresa obj: list) {
+			System.out.println(obj);
+		}
+		
+		System.out.println("\nTESTE EMPRESA UPDATE");
+		empresa = empresaDao.findByCodEmpresa(2);
+		System.out.println(empresa);
+		empresa.setBairro("Liberdade");
+		empresaDao.update(empresa);
+		System.out.println(empresa);
+		
+		System.out.println("TESTE DELETE");
+		empresaDao.deleteByCodEmpresa(2);
+		empresa = empresaDao.findByCodEmpresa(2);
+		System.out.println(empresa);
+
+		System.out.println("TESTE EMPRESA = FINDBYCODEMPRESA");
+		Empresa empresa = empresaDao.findByCodEmpresa(2);
+		System.out.println(empresa)
+
+		
+		System.out.println("TESTE INSERT EMPRESA");
+		Empresa empresa1 = new Empresa(0, "Sociedade Real e Benefica Portuguesa", "Hospital Beneficência Portuguesa", "000616498194/1615", "Cuidado e tratamento hospitalar","Rua São Luiz", 1500, "Bloco D", "Vergueiro", "01561-154", 11,"3505-1000" , "hospitalbeneficencia.bpsp.br", "hospitalbeneficencia@bpsp.br", null);
+		empresaDao.insert(empresa1);
+		System.out.println("Empresa cadastrada. Código da empresa: " + empresa1.getCodEmpresa());
+
+
+TESTE FORNECEDOR
+		FornecedorDao fornecedorDao = DaoFactory.createFornecedorDao();
+		System.out.println("\n\nTESTE FORNECEDOR FINDALL");
+		List<Fornecedor> list = fornecedorDao.findAll();
+		for(Fornecedor obj: list) {
+			System.out.println(obj);
+		}
+		
+		System.out.println("TESTE INSERT EMPRESA");
+		Fornecedor fornecedor1 = new Fornecedor(0, "Sociedade Real e Benefica Portuguesa", "Hospital Beneficência Portuguesa", "000616498194/1615", "Cuidado e tratamento hospitalar","Rua São Luiz", 1500, "Bloco D", "Vergueiro", "01561-154", 11,"3505-1000" , "hospitalbeneficencia.bpsp.br", "hospitalbeneficencia@bpsp.br", null);
+		fornecedorDao.insert(fornecedor1);
+		System.out.println("Fornecedor cadastrada. Código da fornecedor: " + fornecedor1.getCodFornecedor());
+		
+		System.out.println("TESTE EMPRESA = FINDBYCODEMPRESA");
+		Fornecedor fornecedor = fornecedorDao.findByCodFornecedor(2);
+		System.out.println(fornecedor);
+		
+		System.out.println("\nTESTE FORNECEDOR UPDATE");
+		fornecedor = fornecedorDao.findByCodFornecedor(2);
+		System.out.println(fornecedor);
+		fornecedor.setBairro("Liberdade");
+		fornecedorDao.update(fornecedor);
+		System.out.println(fornecedor);
+		
+		System.out.println("TESTE DELETE");
+		fornecedorDao.deleteByCodFornecedor(2);
+		fornecedor = fornecedorDao.findByCodFornecedor(2);
+		System.out.println(fornecedor);
+TESTE FUNCIONARIO
+
+		FuncionarioDao funcionarioDao = DaoFactory.createFuncionarioDao();
+		
+		System.out.println("TESTE FUNCIONARIO FIND ALL");
+		List<Funcionario> list = funcionarioDao.findAll();
+		for(Funcionario obj : list) {
+			System.out.println(obj);
+		}
+		
+		System.out.println("\nTESTE FUNCIONARIO FINDBYID");
+		Funcionario func = funcionarioDao.findByCodFuncionario(11);
+		System.out.println(func);
+		
+		System.out.println("\nTESTE FUNCIONARIO UPDATE");
+		func.setNome("Rafael da Silva Camargo");
+		funcionarioDao.update(func);
+		System.out.println(func);
+		
+		System.out.println("\n TESTE FUNCIONARIO INSERT");
+		Funcionario funcionario = new Funcionario(0, "Felipe Alves", "495689745", "14569874569", "06598 0115", "Rua Senador Chavez", 98, "Casa 2", "Jardim Robru", "04985-356", 11, "949494949", null, new Date(), new Date(), "AB+", "Ajudante Geral", "Quartos", 1650.00, "Recebe Cesta Básica");
+		funcionarioDao.insert(funcionario);
+		System.out.println("Funcionario cadastrado. Código de funcionario: " + funcionario.getRegistroFunc());
+		
+		funcionarioDao.deleteByCodFuncionario(13);
+		System.out.println("Funcionario 13 excluido do sistema");
+
+TESTE PRODUTO
+	ProdutoDao produtoDao = DaoFactory.createProdutoDao();
+		
+		System.out.println("TESTE PRODUTO FINDALL");
+		List<Produto> lista = produtoDao.findAll();
+		for(Produto prod : lista) {
+			System.out.println(prod);
+		}
+		
+		System.out.println("\nTESTE PRODUTO FINDBYCODE");
+		Produto produto = produtoDao.findByCodProduto(3);
+		System.out.println(produto);
+		
+		System.out.println("\nTESTE PRODUTO INSERT");
+		Produto produto2 = new Produto(0, "Notebook Asus i3", 2);
+		produtoDao.insert(produto2);
+		System.out.println(produto2);
+		System.out.println("Produto cadastrado no sistema. Código gerado: " + produto2.getCodProduto());
+		
+		System.out.println("\nTESTE PRODUTO UPDATE");
+		produto2.setEstoqueMinimo(10);
+		produtoDao.update(produto2);
+		System.out.println(produto2);
+		
+		System.out.println("\nTESTE PRODUTO DELETE");
+		produtoDao.deleteByCodProduto(6);
+		produto2 = produtoDao.findByCodProduto(6);
+		System.out.println(produto2);
+
+TESTE NOTA DE COMPRAS
+		Fornecedor fornecedor = new Fornecedor(1, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		Produto produto1 = new Produto(2, null, null);
+		Produto produto2 = new Produto(5, null, null);
+		Produto produto3 = new Produto(4, null, null);
+		NotasComprasDao notaCompraDao = DaoFactory.createNotasCompras();
+		List<NotasCompras> list = notaCompraDao.findAll();
+		for (NotasCompras notas : list) {
+			System.out.println(notas);
+		}
+		
+		System.out.println("\nfind by numeroNF");
+		List<NotasCompras> listaNF = notaCompraDao.findByNumeroNF("123456789");
+		for(NotasCompras nf : listaNF) {
+			System.out.println(nf);
+		}
+
+		System.out.println("\nTESTE FIND BY COD NOTA");
+		NotasCompras FindByCodNota = notaCompraDao.findByCodNotasCompras(2);
+		System.out.println(FindByCodNota);
+		
+	
+		System.out.println("\n\nTESTE INSERT");
+				System.out.println("\n\nTESTE INSERT");
+		NotasCompras notaDeCompra = new NotasCompras(0, fornecedor, "456789", produto1, 20, 120.00, 2400.00, 2400.00, "1561651654651065165798798794", new Date(), null);
+		notaCompraDao.insert(notaDeCompra);
+		System.out.println("Nota de compra inserida! Codigo de nota gerado: " + notaDeCompra.getCodNota());
+	
+		NotasCompras notaDeCompra1 = new NotasCompras(0, fornecedor, "123456789", produto2, "Tomada Bivolt", 60, 60.00, 3600.00, 3600.00, "15616516546518919841984519619818495798798794", new Date(), null);
+		notaCompraDao.insert(notaDeCompra1);
+		System.out.println("Nota de compra inserida! Codigo de nota gerado: " + notaDeCompra1.getCodNota());
+		
+		NotasCompras notaDeCompra2 = new NotasCompras(0, fornecedor, "123456789", produto3, "Tomada Bivolt", 60, 60.00, 3600.00, 3600.00, "15616516546518919841984519619818495798798794", new Date(), null);
+		notaCompraDao.insert(notaDeCompra2);
+		System.out.println("Nota de compra inserida! Codigo de nota gerado: " + notaDeCompra2.getCodNota());
+	
+
+TESTE ESTOQUE
+
+		System.out.println("TESTE INSERT ESTOQUE");
+		Estoque stock = new Estoque(0, produto1, 15, 2);
+		estoqueDao.insert(stock);
+		System.out.println("Codigo gerado: " + stock.getId());
+		
+		
+		Estoque stock2 = new Estoque(0, produto2, 1515, 2);
+		estoqueDao.insert(stock2);
+		System.out.println("Codigo gerado: " + stock2.getId());
+		
+		
+		Estoque stock3 = new Estoque(0, produto3, 35, 15);
+		estoqueDao.insert(stock3);
+		System.out.println("Codigo gerado: " + stock3.getId());
+
+
+		Estoque stock4 = new Estoque(0, produto4, 49, 10);
+		estoqueDao.insert(stock4);
+		System.out.println("Codigo gerado: " + stock4.getId());
+
+
+	EstoqueDao estoqueDao = DaoFactory.createEstoqueDao();
+		Produto produto1 = new Produto(1, null);
+		Produto produto2 = new Produto(2, null);
+		Produto produto3 = new Produto(3, null);
+		Produto produto4 = new Produto(4, null);
+		Produto produto5 = new Produto(5, null);
+	
+
+		List<Estoque> listaEstoque = estoqueDao.findAll();
+		for(Estoque obj : listaEstoque) {
+			System.out.println(obj);
+		}
+		
+		System.out.println("\nFINDBYcodprod");
+		Estoque stock = estoqueDao.findByCodProduto(4);
+		System.out.println(stock);
+		
+		System.out.println("\nTESTE FIND BY COD PRODUTO");
+		Estoque stock1 = estoqueDao.findByCodEstoque(3);
+		System.out.println(stock1);
+		
+		stock1.setEstoqueAtual(45);
+		estoqueDao.update(stock1);
+		System.out.println(stock1);
+		
+		estoqueDao.deleteByCodEstoque(10);
+		stock1 = estoqueDao.findByCodEstoque(10);
+		System.out.println(stock1);
+		
+
+TESTE DE ENTRADA DE NOTAS
+
+EntradaProdutoDao entradaProdutoDao = DaoFactory.createEntradaProduto();
+		NotasComprasDao notaCompraDao = DaoFactory.createNotasCompras();
+		Fornecedor fornecedor = new Fornecedor(1, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		Funcionario func = new Funcionario(12, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		Produto prod = new Produto(2, null);
+		NotasCompras nf = new NotasCompras(2, fornecedor, "127899", prod, 30, 30.00, 900.00, 900.00, "126119849841981498198779819", new Date(), "");
+		notaCompraDao.insert(nf);
+		System.out.println("Nota inserida no sistema. Codigo gerado: " + nf.getCodNota());
+		
+		
+		EntradaProduto novaEntrada = new EntradaProduto(0, nf, prod, new Date(), nf, nf, nf, nf, func);
+		entradaProdutoDao.insert(novaEntrada);
+		System.out.println("Entrada de produto registrada com sucesso. Código gerado: " + novaEntrada.getCodEntrada());
+		
+
+
+	EntradaProduto novaEntrada = entradaProdutoDao.findByCodEntradaProduto(4);
+		novaEntrada.setCodProduto(prod2);
+		entradaProdutoDao.update(novaEntrada);
+		System.out.println("Codigo de produto atualizado");
+
+
+		List<EntradaProduto> findAll = entradaProdutoDao.findAll();
+		for(EntradaProduto prods: findAll) {
+			System.out.println(prods );
+		}
+
+
+
+entradaProdutoDao.deleteByCodEntradaProduto(11);
+		novaEntrada = entradaProdutoDao.findByCodEntradaProduto(11);
+		System.out.println(novaEntrada);
+
+	System.out.println("TESTE FIND BY cod prod");
+		List<EntradaProduto> numeroNF = entradaProdutoDao.findByCodProd(5);
+		for(EntradaProduto prods : numeroNF) {
+			System.out.println(prods);
+		}
+		
+
+EntradaProduto novaEntrada = entradaProdutoDao.findByCodEntradaProduto(8);
+		System.out.println(novaEntrada);
+
+
+TESTE DE SAIDA DO ESTOQUE
+
+	SaidaProduto saidaProduto = new SaidaProduto(0, estoque, estoque, new Date(), 10, func);
+		saidaProdutoDao.insert(saidaProduto);
+		System.out.println("Saída registrada. Código: " + saidaProduto.getCodSaida());
+
+
+
+System.out.println(saidaProduto);
+		saidaProduto.setQuantidade(15);
+		saidaProdutoDao.update(saidaProduto);
+		System.out.println("Atualizado. Nova contagem: " + saidaProduto.getQuantidade());
+
+
+	SaidaProduto saidaProduto = saidaProdutoDao.findByCodSaidaProduto(1);
+		System.out.println(saidaProduto);
+		
+		System.out.println("TESTE FIND BY COD PROD");
+		List<SaidaProduto> codProduto = saidaProdutoDao.findByCodProduto(4);
+		for(SaidaProduto prodss : codProduto) {
+			System.out.println(codProduto);
+		}
+		
+
+		SaidaProduto saidaProduto = saidaProdutoDao.findByCodSaidaProduto(1);
+		System.out.println(saidaProduto);
+		
+		System.out.println("TESTE FIND BY COD PROD");
+		List<SaidaProduto> codProduto = saidaProdutoDao.findAll();
+		for(SaidaProduto prodss : codProduto) {
+			System.out.println(codProduto);
+		}
+
+
+
+TESTES DE ORDEM DE SERVIÇO
+	OrdemServicoCliente osc = new OrdemServicoCliente(0, cliente, "escrivaninha para livros", new Date(), new Date(), new Date(), new Date(), "p", 650.00, func, "livros grandes de faculdade");
+		oscDao.insert(osc);
+		System.out.println("Inserido. Num pedido:" + osc.getNumeroPedido());
+
+
+OrdemServicoCliente osc1 = oscDao.findByNumPedido(6);
+		osc1.setDescServico("tabua de passar roupas");
+		oscDao.update(osc1);
+		System.out.println("Atualizado!");
+
+UPDATE DE ORDEM SERVIÇO TESTADO COM SUCESSO
+
+
+	List<OrdemServicoCliente> osc = oscDao.findByCodCliente(1);
+		for(OrdemServicoCliente osc5 : osc) {
+			System.out.println(osc5);
+		}
+
+
+List<OrdemServicoCliente> osc = oscDao.findByStatus("P");
+		for(OrdemServicoCliente osc5 : osc) {
+			System.out.println(osc5);
+		}
+
+
+	List<OrdemServicoCliente> osc = oscDao.findAll();
+		for(OrdemServicoCliente osc5 : osc) {
+			System.out.println(osc5);
+		}
